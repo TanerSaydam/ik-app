@@ -1,1 +1,13 @@
-<p>professions works!</p>
+<app-generic [title]="'Meslekler Formu'" [routes]="['Meslekler','Meslekler Detay']">
+    <app-generic-section [title]="'Meslek Ekleme Formu'">        
+        <app-pro-add  (addEvent)="add($event)"></app-pro-add>
+
+    </app-generic-section>
+
+    <app-generic-section [title]="'Meslek Ekleme Formu'">
+
+        <app-pro-list [professions]="professions"></app-pro-list>
+
+    </app-generic-section>
+
+</app-generic>
