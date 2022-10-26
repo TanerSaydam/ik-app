@@ -1,12 +1,12 @@
 <app-generic [title]="'Meslekler Formu'" [routes]="['Meslekler','Meslekler Detay']">
     <app-generic-section [title]="'Meslek Ekleme Formu'">        
-        <app-pro-add  (addEvent)="add($event)"></app-pro-add>
+        <app-pro-add [profession]="profession" (addEvent)="add($event)"></app-pro-add>
 
     </app-generic-section>
 
     <app-generic-section [title]="'Meslek Ekleme Formu'">
 
-        <app-pro-list [professions]="professions"></app-pro-list>
+        <app-pro-list (deleteEvent)="delete($event)" [professions]="professionList"></app-pro-list>
 
     </app-generic-section>
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ProfessionModel } from '../models/profession.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { ProfessionModel } from '../models/profession.model';
 })
 export class ProListComponent implements OnInit, OnChanges {
 
+  @Output() deleteEvent = new EventEmitter<number>();
   @Input() professions: ProfessionModel[] = [];
   constructor() { }
 
@@ -20,6 +21,6 @@ export class ProListComponent implements OnInit, OnChanges {
 
 
   delete(id: number){
-    
+    this.deleteEvent.emit(id);
   }
 }

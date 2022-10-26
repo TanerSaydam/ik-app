@@ -9,7 +9,8 @@ import { ProfessionService } from './services/profession.service';
 })
 export class ProfessionsComponent implements OnInit {
   
-  professions: ProfessionModel[] = [];
+  professionList: ProfessionModel[] = [];
+  profession: ProfessionModel = new ProfessionModel();
   constructor(
     private _pro: ProfessionService
   ) { }
@@ -19,7 +20,8 @@ export class ProfessionsComponent implements OnInit {
   }
 
   add(model: ProfessionModel){
-    this._pro.add(model, ()=> {     
+    this._pro.add(model, ()=> { 
+      this.profession = new ProfessionModel();    
       this.getList()});
   }
  
@@ -28,7 +30,7 @@ export class ProfessionsComponent implements OnInit {
   }
 
   getList(){
-    this._pro.getList((res)=> this.professions = res);
+    this._pro.getList((res)=> this.professionList = res);
   }
 
 }

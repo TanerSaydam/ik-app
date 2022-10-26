@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ProfessionModel } from '../models/profession.model';
 
 @Component({
@@ -7,11 +7,12 @@ import { ProfessionModel } from '../models/profession.model';
   styleUrls: ['./pro-add.component.css']
 })
 export class ProAddComponent implements OnInit {
-    
+
   @Output() addEvent = new EventEmitter<ProfessionModel>();
-  profession: ProfessionModel = new ProfessionModel();
+  @Input() profession: ProfessionModel = new ProfessionModel();
   constructor(    
   ) { }
+ 
 
   ngOnInit(): void {
   }
