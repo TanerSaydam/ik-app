@@ -1,11 +1,23 @@
 
+    <form #addForm="ngForm" (ngSubmit)="add()">
         <div class="form-group">
             <label for="meslekAdi">Meslek Adı</label>
-            <input [(ngModel)]="profession.name" type="text" class="form-control">
+            <input
+              [appValidationCheck]="addForm.valid"
+              [(ngModel)]="profession.name"
+              required
+              name="name"
+              minlength="3"
+              type="text"
+              class="form-control">
+            <div class="invalid-feedback">
+                Meslek adı girmelisiniz!
+            </div>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary" (click)="add()">
+            <button class="btn btn-primary" [disabled]="!addForm.valid">
                 <i class="fa fa-plus"></i>
                 Kaydet
             </button>
         </div>
+    </form>

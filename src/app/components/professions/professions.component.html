@@ -1,14 +1,25 @@
 
 <app-generic [title]="'Meslekler Formu'" [routes]="['Meslekler','Meslekler Detay']">
-    <app-generic-section [title]="'Meslek Ekleme Formu'">        
+    <!-- Kayıt Formu -->
+    <app-generic-section *ngIf="!isUpdateFormActive" [title]="'Meslek Ekleme Formu'">        
         <app-pro-add [profession]="profession" (addEvent)="add($event)"></app-pro-add>
 
     </app-generic-section>
 
-    <app-generic-section [title]="'Meslek Ekleme Formu'">
+    <!-- Güncelleme Formu -->
+    <app-generic-section *ngIf="isUpdateFormActive" [title]="'Meslek Güncelleme Formu'">
 
-        <app-pro-list (deleteEvent)="delete($event)" [professions]="professionList"></app-pro-list>
+        <app-pro-update [profession]="updateProfession" (closeEvent)="isUpdateFormActive = false" (updateEvent)="update($event)"></app-pro-update>
 
     </app-generic-section>
+
+    <!-- Listeleme Formu -->
+    <app-generic-section [title]="'Meslek Listesi'">
+
+        <app-pro-list (deleteEvent)="delete($event)" (getEvent)="get($event)" [professions]="professionList"></app-pro-list>
+
+    </app-generic-section>
+
+ 
 
 </app-generic>

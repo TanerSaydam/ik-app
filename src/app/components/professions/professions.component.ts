@@ -11,6 +11,10 @@ export class ProfessionsComponent implements OnInit {
   
   professionList: ProfessionModel[] = [];
   profession: ProfessionModel = new ProfessionModel();
+  updateProfession: ProfessionModel = new ProfessionModel();  
+
+  isUpdateFormActive = false;
+
   constructor(
     private _pro: ProfessionService
   ) { }
@@ -24,13 +28,23 @@ export class ProfessionsComponent implements OnInit {
       this.profession = new ProfessionModel();    
       this.getList()});
   }
+
+  update(model: boolean){
+    this.profession = new ProfessionModel();    
+    this.getList();
+  }
  
   delete(id: number){
     this._pro.delete(id, ()=> this.getList());    
   }
 
+  get(id: number){
+    this.isUpdateFormActive = true;
+    this._pro.getById(id, (res)=> this.updateProfession = res.data);
+  }
+
   getList(){
-    this._pro.getList((res)=> this.professionList = res);
+    this._pro.getList((res)=> this.professionList = res.data);
   }
 
 }

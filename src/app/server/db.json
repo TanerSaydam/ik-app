@@ -10,7 +10,7 @@
     }
   ],
   "employee": [],
-  "proffession": [
+  "profession": [
     {
       "id": 1,
       "name": "Yazılım"
@@ -21,15 +21,11 @@
     },
     {
       "id": 3,
-      "name": "FrontEnd"
+      "name": "Finans"
     },
     {
       "id": 4,
-      "name": "Fullstack"
-    },
-    {
-      "id": 5,
-      "name": "Patron"
+      "name": "İnsan Kaynakları"
     }
   ]
 }

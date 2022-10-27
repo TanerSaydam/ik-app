@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ProfessionModel } from '../models/profession.model';
 
 @Component({
@@ -10,6 +11,7 @@ export class ProAddComponent implements OnInit {
 
   @Output() addEvent = new EventEmitter<ProfessionModel>();
   @Input() profession: ProfessionModel = new ProfessionModel();
+  @ViewChild("addForm") addForm: NgForm;
   constructor(    
   ) { }
  
@@ -18,8 +20,7 @@ export class ProAddComponent implements OnInit {
   }
 
   add(){
-    this.addEvent.emit(this.profession)
+    if (this.addForm.valid)
+      this.addEvent.emit(this.profession)
   }
-
-
 }

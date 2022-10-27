@@ -1,0 +1,7 @@
+<div class="form-group">
+    <label>{{name}}</label>
+    <select class="{{class}}" (change)="setSelected($event)">
+        <option value="">Seçim yapınız...</option>
+        <option *ngFor="let x of data" [value]="x.id">{{x.value}}</option>
+    </select>
+</div>
