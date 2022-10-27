@@ -7,6 +7,7 @@ import { ErrorService } from 'src/app/services/error.service';
 import { ToastrService } from 'src/app/services/toastr.service';
 import { environment } from 'src/environments/environment';
 import { ProfessionModel } from '../models/profession.model';
+import { Pagination } from '../professions.component';
 
 
 @Injectable({
@@ -53,8 +54,8 @@ export class ProfessionService {
     })
   }
 
-  getList(callBack: (res:ListDataResult<ProfessionModel>)=> void){
-    this._http.get<ListDataResult<ProfessionModel>>(this.api + "/getList").subscribe({
+  getList(page: Pagination,callBack: (res:any)=> void){
+    this._http.get<any>(`${this.api}/GetListWithPagination/${page.page}/${page.size}`).subscribe({
       next: (res)=> {callBack(res)},
       error: (err: HttpErrorResponse)=> console.log(err)      
     })

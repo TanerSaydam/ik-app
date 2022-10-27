@@ -10,8 +10,11 @@ import { ProfessionModel } from '../models/profession.model';
 })
 export class ProListComponent implements OnInit, OnChanges {
 
+  @Input() pageCount: number = 0;
+  search: string = "";
   @Output() deleteEvent = new EventEmitter<number>();
   @Output() getEvent = new EventEmitter<number>();
+  @Output() getListWithPageNumber = new EventEmitter<number>();
   @Input() professions: ProfessionModel[] = [];
   constructor(
     private _swal: SwalService
@@ -34,5 +37,9 @@ export class ProListComponent implements OnInit, OnChanges {
 
   get(id: number){
     this.getEvent.emit(id);
+  }
+
+  setPageNumber(pageNumber: number){
+    this.getListWithPageNumber.emit(pageNumber);
   }
 }

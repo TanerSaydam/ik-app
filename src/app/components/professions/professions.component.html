@@ -16,7 +16,7 @@
     <!-- Listeleme Formu -->
     <app-generic-section [title]="'Meslek Listesi'">
 
-        <app-pro-list (deleteEvent)="delete($event)" (getEvent)="get($event)" [professions]="professionList"></app-pro-list>
+        <app-pro-list [pageCount]="pageCount" (getListWithPageNumber)="setCurrentPageNumber($event)" (deleteEvent)="delete($event)" (getEvent)="get($event)" [professions]="professionList"></app-pro-list>
 
     </app-generic-section>
 
