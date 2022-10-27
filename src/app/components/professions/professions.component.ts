@@ -26,7 +26,7 @@ export class ProfessionsComponent implements OnInit {
     private _pro: ProfessionService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
     this.getList();
   }
 

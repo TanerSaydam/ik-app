@@ -24,7 +24,7 @@ export class ProListComponent implements OnInit, OnChanges {
     this.professions = changes["professions"].currentValue;
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {        
   }
 
   delete(id: number){
