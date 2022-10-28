@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { DecodeService } from 'src/app/services/decode.service';
 import { RoutesModel } from '../../routes/routes.model';
 
 @Component({
@@ -17,10 +18,17 @@ export class MainSidebarComponent implements OnInit {
 
   
   routes = RoutesModel;
-
-  constructor() { }
+  userName: string = "";
+roles: string[] = []
+  constructor(
+    private _decode: DecodeService
+  ) { }
 
   ngOnInit(): void {
+    this.userName = this._decode.getUserName();
+    this.roles = this._decode.getRoles();
+   // console.log(this.roles);
+    
   }
 
 }

@@ -1,7 +1,7 @@
-import { AfterContentChecked, AfterViewInit, Component, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 
-import { UserModel } from 'src/app/models/user.model';
 import { LoginService } from './services/login.service';
 
 
@@ -10,9 +10,10 @@ import { LoginService } from './services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],  
   providers: [LoginService],
-  standalone: true,
+  standalone: true,  
   imports: [
-    
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class LoginComponent implements OnInit {
