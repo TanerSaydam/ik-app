@@ -1,12 +1,21 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { SwalService } from 'src/app/services/swal.service';
 import { ProfessionModel } from '../models/profession.model';
+import { ProfessionPipe } from './pipe/profession.pipe';
 
 
 @Component({
   selector: 'app-pro-list',
   templateUrl: './pro-list.component.html',
-  styleUrls: ['./pro-list.component.css']
+  styleUrls: ['./pro-list.component.css'],
+  standalone: true,
+  imports: [
+    FormsModule,
+    CommonModule,
+    ProfessionPipe
+  ]
 })
 export class ProListComponent implements OnInit, OnChanges {
 

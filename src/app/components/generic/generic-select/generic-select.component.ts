@@ -1,9 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-generic-select',
   templateUrl: './generic-select.component.html',
-  styleUrls: ['./generic-select.component.css']
+  styleUrls: ['./generic-select.component.css'],
+  standalone: true,
+  imports: [
+    CommonModule
+  ]
 })
 export class GenericSelectComponent implements OnInit {
 

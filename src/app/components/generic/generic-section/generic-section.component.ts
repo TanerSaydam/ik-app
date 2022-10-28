@@ -3,7 +3,11 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-generic-section',
   templateUrl: './generic-section.component.html',
-  styleUrls: ['./generic-section.component.css']
+  styleUrls: ['./generic-section.component.css'],
+  standalone: true,
+  imports: [
+    
+  ]
 })
 export class GenericSectionComponent implements OnInit {
 

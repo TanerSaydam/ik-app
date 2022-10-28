@@ -9,7 +9,11 @@ import { LoginService } from './services/login.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],  
-  providers: [LoginService]
+  providers: [LoginService],
+  standalone: true,
+  imports: [
+    
+  ]
 })
 export class LoginComponent implements OnInit {
 

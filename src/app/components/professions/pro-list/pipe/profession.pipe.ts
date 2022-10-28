@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ProfessionModel } from '../../models/profession.model';
 
 @Pipe({
-  name: 'professionPipe'
+  name: 'professionPipe',
+  standalone: true
 })
 export class ProfessionPipe implements PipeTransform {
 

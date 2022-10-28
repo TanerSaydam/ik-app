@@ -1,13 +1,19 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import { ValidationCheckDirective } from 'src/app/directives/validation-check.directive';
 import { ProfessionModel } from '../models/profession.model';
 import { ProfessionService } from '../services/profession.service';
 
 @Component({
   selector: 'app-pro-update',
   templateUrl: './pro-update.component.html',
-  styleUrls: ['./pro-update.component.css']
+  styleUrls: ['./pro-update.component.css'],
+  standalone: true,
+  imports: [
+    FormsModule,
+    ValidationCheckDirective
+  ]
 })
 export class ProUpdateComponent implements OnInit {
 

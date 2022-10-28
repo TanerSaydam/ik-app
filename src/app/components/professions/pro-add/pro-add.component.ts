@@ -1,11 +1,17 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import { ValidationCheckDirective } from 'src/app/directives/validation-check.directive';
 import { ProfessionModel } from '../models/profession.model';
 
 @Component({
   selector: 'app-pro-add',
   templateUrl: './pro-add.component.html',
-  styleUrls: ['./pro-add.component.css']
+  styleUrls: ['./pro-add.component.css'],
+  standalone: true,
+  imports: [
+    FormsModule,
+    ValidationCheckDirective
+  ]
 })
 export class ProAddComponent implements OnInit {
 

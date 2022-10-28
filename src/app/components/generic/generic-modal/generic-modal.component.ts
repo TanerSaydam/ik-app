@@ -3,7 +3,11 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-generic-modal',
   templateUrl: './generic-modal.component.html',
-  styleUrls: ['./generic-modal.component.css']
+  styleUrls: ['./generic-modal.component.css'],
+  standalone: true,
+  imports: [
+    
+  ]
 })
 export class GenericModalComponent implements OnInit {
 

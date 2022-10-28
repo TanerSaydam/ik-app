@@ -1,5 +1,12 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { GenericSectionComponent } from '../generic/generic-section/generic-section.component';
+import { GenericComponent } from '../generic/generic/generic.component';
 import { ProfessionModel } from './models/profession.model';
+import { ProAddComponent } from './pro-add/pro-add.component';
+import { ProListComponent } from './pro-list/pro-list.component';
+import { ProUpdateComponent } from './pro-update/pro-update.component';
 import { ProfessionService } from './services/profession.service';
 
 export class Pagination{
@@ -11,7 +18,20 @@ export class Pagination{
 @Component({
   selector: 'app-professions',
   templateUrl: './professions.component.html',
-  styleUrls: ['./professions.component.css']
+  styleUrls: ['./professions.component.css'],
+  standalone: true,
+  providers: [
+    ProfessionService,
+  ],
+  imports: [
+    GenericComponent,
+    GenericSectionComponent,
+    ProUpdateComponent,
+    ProAddComponent,
+    ProListComponent,
+    CommonModule,
+    HttpClientModule
+  ]
 })
 export class ProfessionsComponent implements OnInit {
     
