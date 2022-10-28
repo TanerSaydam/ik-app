@@ -3,11 +3,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SelectModel } from 'src/app/models/select.model';
+import { GenericModuleModule } from '../generic/generic-module/generic-module.module';
 import { GenericSectionComponent } from '../generic/generic-section/generic-section.component';
 import { GenericSelectComponent } from '../generic/generic-select/generic-select.component';
 import { GenericTableComponent } from '../generic/generic-table/generic-table.component';
 import { GenericComponent } from '../generic/generic/generic.component';
 import { ProfessionModel } from '../professions/models/profession.model';
+import { StandAloneComponent } from '../stand-alone/stand-alone.component';
 import { EmployeeModel } from './models/employee.model';
 import { EmployeeService } from './services/employee.service';
 
@@ -20,12 +22,7 @@ import { EmployeeService } from './services/employee.service';
     EmployeeService
   ],
   imports: [
-    GenericSelectComponent,
-    CommonModule,
-    GenericComponent,
-    GenericSectionComponent,
-    GenericTableComponent,
-    HttpClientModule
+    GenericModuleModule
   ]
 })
 export class EmployeesComponent implements OnInit {
