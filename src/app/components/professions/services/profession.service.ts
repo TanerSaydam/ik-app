@@ -16,29 +16,29 @@ export class ProfessionService {
   api = environment.apiUrl  + "Professions";
 
   constructor( 
-    private _http2: HttpService
+    private _http: HttpService
   ) { }
 
 
   add(model: ProfessionModel, callBack:(res: any)=> void){
-    this._http2.add<any>(`${this.api}/add`,model, (res)=> callBack(res));
+    this._http.add<any>(`${this.api}/add`,model, (res)=> callBack(res));
   }
 
   update(model: ProfessionModel, callBack:(res: any)=> void){
-    this._http2.update<any>(`${this.api}/update`,model, (res)=> callBack(res));
+    this._http.update<any>(`${this.api}/update`,model, (res)=> callBack(res));
   }
 
   delete(id: number, callBack:(res: any)=> void){
-    this._http2.delete<any>(`${this.api}/delete/${id}`, (res)=> callBack(res));
+    this._http.delete<any>(`${this.api}/delete/${id}`, (res)=> callBack(res));
   }
 
   
   getById(id: number, callBack:(res:DataResultModel<ProfessionModel>)=> void){
-    this._http2.get<any>(`${this.api}/getById/${id}`, (res)=> callBack(res));
+    this._http.get<any>(`${this.api}/getById/${id}`, (res)=> callBack(res));
   }
 
   getList(page: Pagination, callBack: (res:any)=> void){
-    this._http2.get<any>(`${this.api}/GetListWithPagination/${page.page}/${page.size}`,(res)=> callBack(res))
+    this._http.get<any>(`${this.api}/GetListWithPagination/${page.page}/${page.size}`,(res)=> callBack(res))
   }
   
 }

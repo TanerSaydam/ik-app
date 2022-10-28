@@ -23,7 +23,7 @@ export class Pagination{
   styleUrls: ['./professions.component.css'],
   standalone: true,
   providers: [
-    ProfessionService,
+    ProfessionService,    
     HttpService,    
   ],
   imports: [
