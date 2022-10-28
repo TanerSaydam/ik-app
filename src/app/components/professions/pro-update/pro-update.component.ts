@@ -29,7 +29,7 @@ export class ProUpdateComponent implements OnInit {
   }
 
   update(){
-    debugger
+   
     if(this.updateForm.valid){
       this._pro.update(this.profession,()=>{
         this.updateEvent.emit(true);

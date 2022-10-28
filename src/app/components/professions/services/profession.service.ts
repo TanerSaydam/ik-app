@@ -1,10 +1,8 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DataResultModel } from 'src/app/models/data-result.model';
-import { ListDataResult } from 'src/app/models/list-data-result.model';
-import { ResultModel } from 'src/app/models/result.model';
-import { ErrorService } from 'src/app/services/error.service';
-import { ToastrService } from 'src/app/services/toastr.service';
+
+import { HttpService } from 'src/app/services/http.service';
+
 import { environment } from 'src/environments/environment';
 import { ProfessionModel } from '../models/profession.model';
 import { Pagination } from '../professions.component';
@@ -17,48 +15,30 @@ export class ProfessionService {
  
   api = environment.apiUrl  + "Professions";
 
-  constructor(
-    private _http: HttpClient,
-    private _toastr: ToastrService,
-    private _error:ErrorService,    
+  constructor( 
+    private _http2: HttpService
   ) { }
 
-  add(model: ProfessionModel, callBack: ()=> void){    
-    this._http.post<any>(this.api + "/add", model).subscribe({
-      next: ()=> {this._toastr.callToastr("Kayıt işlemi başarılı","","success"); callBack()},
-      error: (err: HttpErrorResponse)=> this._error.errorHandler(err)
-    })
+
+  add(model: ProfessionModel, callBack:(res: any)=> void){
+    this._http2.add<any>(`${this.api}/add`,model, (res)=> callBack(res));
   }
 
-  update(model: ProfessionModel, callBack?: ()=> void){
-    this._http.put<ResultModel>(this.api + "/update", model).subscribe({
-      next: ()=> {this._toastr.callToastr("Güncelle işlemi başarılı","","info"); callBack()},
-      error: (err: HttpErrorResponse)=> 
-      {        
-        this._error.errorHandler(err)
-      }
-    })
+  update(model: ProfessionModel, callBack:(res: any)=> void){
+    this._http2.update<any>(`${this.api}/update`,model, (res)=> callBack(res));
   }
 
-  delete(id: number, callBack: ()=> void){
-    this._http.delete<ResultModel>(this.api + "/delete/" + id).subscribe({
-      next: ()=> {this._toastr.callToastr("Silme işlemi başarılı","","warning"); callBack()},
-      error: (err: HttpErrorResponse)=> console.log(err)      
-    })
+  delete(id: number, callBack:(res: any)=> void){
+    this._http2.delete<any>(`${this.api}/delete/${id}`, (res)=> callBack(res));
   }
 
-  getById(id: number, callBack: (res:DataResultModel<ProfessionModel>)=> void){
-    this._http.get<DataResultModel<ProfessionModel>>(this.api + "/getById/" + id).subscribe({
-      next: (res)=> {callBack(res)},
-      error: (err: HttpErrorResponse)=> console.log(err) 
-    })
+  
+  getById(id: number, callBack:(res:DataResultModel<ProfessionModel>)=> void){
+    this._http2.get<any>(`${this.api}/getById/${id}`, (res)=> callBack(res));
   }
 
-  getList(page: Pagination,callBack: (res:any)=> void){
-    this._http.get<any>(`${this.api}/GetListWithPagination/${page.page}/${page.size}`).subscribe({
-      next: (res)=> {callBack(res)},
-      error: (err: HttpErrorResponse)=> console.log(err)      
-    })
+  getList(page: Pagination, callBack: (res:any)=> void){
+    this._http2.get<any>(`${this.api}/GetListWithPagination/${page.page}/${page.size}`,(res)=> callBack(res))
   }
   
 }

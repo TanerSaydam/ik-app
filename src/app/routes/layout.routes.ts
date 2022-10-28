@@ -9,11 +9,11 @@ export const LayoutRoutesConst: Routes = [
     {
         path: "profession",
         loadComponent: () => import("../components/professions/professions.component").then(m => m.ProfessionsComponent),
-        canActivate: [RoleGuard]
+        //canActivate: [RoleGuard]
     },
     {
         path: "employee",
         loadComponent: () => import("../components/employees/employees.component").then(m => m.EmployeesComponent),
-        canActivate: [RoleGuard]
+        //canActivate: [RoleGuard]
     }
 ]

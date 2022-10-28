@@ -18,7 +18,7 @@ export class DecodeService {
   }
 
   getUserName(): string{
-    let decodeToken = this.jwt.decodeToken(this.decrytionToken());    
+    let decodeToken = this.jwt.decodeToken(this.decrytionToken());        
     return decodeToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
     
   }

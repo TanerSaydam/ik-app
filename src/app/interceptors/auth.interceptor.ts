@@ -16,6 +16,8 @@ export class AuthInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    console.log("asdasd");
+    
     let token = this._crypto.decryption(localStorage.getItem("access-token"));
     let newRequest = request.clone({
       headers: request.headers.set("Authorization", "Bearer " + token)

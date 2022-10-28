@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
+import { HttpService } from 'src/app/services/http.service';
 import { GenericSectionComponent } from '../generic/generic-section/generic-section.component';
 import { GenericComponent } from '../generic/generic/generic.component';
 import { ProfessionModel } from './models/profession.model';
@@ -22,6 +24,7 @@ export class Pagination{
   standalone: true,
   providers: [
     ProfessionService,
+    HttpService,    
   ],
   imports: [
     GenericComponent,
@@ -29,7 +32,7 @@ export class Pagination{
     ProUpdateComponent,
     ProAddComponent,
     ProListComponent,
-    CommonModule,
+    CommonModule,    
     HttpClientModule
   ]
 })
